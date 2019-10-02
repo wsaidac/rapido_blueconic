@@ -1,29 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import Nav from '../components/nav'
 import ProductList from '../components/product-list'
 
+
 import withData from "../lib/apollo";
 
-const Home = () => (
+function createMarkup() {
+  return {__html: 'var bcChannelIdentifier = "dev.rapreactpoc.com"'};
+}
+
+const Home = () => {
+
+useEffect(() => {
+
+    let bcScript = document.createElement('script');
+    bcScript.async = true;
+    bcScript.src = '//cg.sb.blueconic.net/frontend/static/javascript/blueconic/blueconic.min.js';
+    document.head.appendChild(bcScript);
+  });
+
+  return (
   <div>
     <Head>
       <title>Home</title>
       <link rel='icon' href='/static/favicon.ico' importance='low' />
-  <script>
- bcChannelIdentifier = “dev.rapreactpoc.com:4000”;
-</script>
-  
-<script type=“text/javascript”>
-(function() {
-  this.bcHostname = ‘cg.sb.blueconic.net’;
-  var protocol = ((“https:” == document.location.protocol) ? “https://” : “http://“);
-  var bcScript = document.createElement(‘script’);
-  bcScript.async = true;
-  bcScript.src = protocol + this.bcHostname + ‘/frontend/static/javascript/blueconic/blueconic.min.js’;
-  (document.getElementsByTagName(‘head’)[0] || document.getElementsByTagName(‘body’)[0]).appendChild(bcScript);
-})();
-</script>
+
+<script dangerouslySetInnerHTML={
+  createMarkup()
+}/>
+
     </Head>
 
     <div className='hero'>
@@ -100,5 +106,6 @@ const Home = () => (
     `}</style>
   </div>
 )
+}
 
 export default withData(Home)

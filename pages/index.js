@@ -7,7 +7,7 @@ import ProductList from '../components/product-list'
 import withData from "../lib/apollo";
 
 function createMarkup() {
-  return {__html: 'var bcChannelIdentifier = "dev.rapreactpoc.com"'};
+  return {__html: 'var bcChannelIdentifier = "dev.rapidoblueconic-lf4n747u4.now.sh"'};
 }
 
 const Home = () => {

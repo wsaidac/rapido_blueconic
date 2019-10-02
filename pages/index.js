@@ -7,7 +7,7 @@ import ProductList from '../components/product-list'
 import withData from "../lib/apollo";
 
 function createMarkup() {
-  return {__html: 'var bcChannelIdentifier = "dev.bcreactpoc.now.sh/"'};
+  return {__html: 'var bcChannelIdentifier = "dev.bcreactpoc.now.sh"'};
 }
 
 const Home = () => {
